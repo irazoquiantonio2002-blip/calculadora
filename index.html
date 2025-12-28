@@ -3,96 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oly Systems - Auditoría de Ecosistema IA</title>
+    <title>Oly Systems - Auditoría de Alta Eficiencia</title>
     <!-- Tailwind CSS para el diseño premium -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons para la iconografía -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
         
         :root {
-            --primary: #4f46e5;
-            --primary-hover: #4338ca;
+            --primary: #10b981; /* Emerald 500 */
+            --primary-dark: #059669;
+            --glass-bg: rgba(255, 255, 255, 0.6);
+            --mercury-gradient: linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%);
         }
 
         body { 
             font-family: 'Inter', sans-serif; 
+            background-color: #fcfcfc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(226, 232, 240, 0.5) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(209, 213, 219, 0.3) 0px, transparent 50%);
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
-        /* Estilos personalizados para los sliders */
+        /* Destellos de luz plateados redondos */
+        .light-glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(226, 232, 240, 0.4) 60%, transparent 100%);
+            z-index: -1;
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(160%);
+            -webkit-backdrop-filter: blur(20px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        .mercury-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 1);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.03);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .mercury-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.06);
+            border-color: rgba(16, 185, 129, 0.2);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Botón estilo Big Tech Plata/Esmeralda */
+        .btn-mercury {
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+            color: white;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-mercury:hover {
+            box-shadow: 0 12px 24px -6px rgba(16, 185, 129, 0.4);
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        /* Sliders Elegantes */
         input[type="range"] {
             -webkit-appearance: none;
-            height: 6px;
+            height: 2px;
             background: #e2e8f0;
-            border-radius: 5px;
-            outline: none;
+            border-radius: 1px;
         }
 
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            background: var(--primary);
-            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            background: #ffffff;
+            border: 1px solid #d1d5db;
             border-radius: 50%;
-            border: 2px solid white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
         }
 
-        .card-glass {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
+        input[type="range"]::-webkit-slider-thumb:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.1);
         }
 
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        .text-mercury-title {
+            background: linear-gradient(to right, #1e293b, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
         }
 
         .loading-pulse {
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            animation: pulse 2s infinite;
         }
-
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: .5; }
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen">
+<body class="min-h-screen">
 
-    <div class="max-w-7xl mx-auto p-4 md:p-8">
+    <!-- Destellos de fondo Mercurio -->
+    <div class="light-glow" style="top: -5%; left: 10%;"></div>
+    <div class="light-glow" style="bottom: 5%; right: 5%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(16,185,129,0.03) 0%, transparent 70%);"></div>
+
+    <div class="max-w-7xl mx-auto p-4 md:p-8 relative">
         
-        <!-- HEADER -->
-        <header class="flex flex-col md:flex-row justify-between items-center mb-8 bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
-            <div class="flex items-center gap-4">
-                <div class="bg-indigo-600 p-2.5 rounded-2xl shadow-lg shadow-indigo-200 animate-float">
-                    <i data-lucide="zap" class="text-white w-6 h-6"></i>
-                </div>
-                <div>
-                    <h1 class="text-2xl font-black tracking-tight text-slate-800 uppercase leading-none mb-1">Oly Systems</h1>
-                    <p class="text-[10px] font-bold text-indigo-500 uppercase tracking-[0.2em]">IA Automation Audit v4.0</p>
-                </div>
+        <!-- HEADER SIN LOGOS - ESTILO APPLE -->
+        <header class="flex flex-col md:flex-row justify-between items-center mb-10 glass-panel p-8 rounded-[2rem]">
+            <div class="text-center md:text-left">
+                <h1 class="text-3xl font-black tracking-tighter text-mercury-title uppercase mb-1">Oly Systems</h1>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.4em] ml-0.5">Auditoría Operativa de Élite</p>
             </div>
             
-            <div class="flex gap-6 mt-6 md:mt-0">
-                <div class="text-right border-r pr-6 border-slate-100">
-                    <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest mb-1">Sincronización</p>
-                    <p id="api-status" class="text-[10px] font-bold text-amber-500 flex items-center gap-1.5 justify-end loading-pulse">
-                        <i data-lucide="refresh-cw" class="w-3 h-3"></i> Conectando...
+            <div class="flex gap-10 mt-6 md:mt-0">
+                <div class="text-right border-r pr-10 border-slate-200">
+                    <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest mb-1.5">Sincronización</p>
+                    <p id="api-status" class="text-[10px] font-black text-emerald-600 flex items-center gap-2 justify-end loading-pulse">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Mercado en Vivo
                     </p>
                 </div>
                 <div class="text-right">
-                    <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest mb-1">Mercado Actual</p>
-                    <p id="display-pais" class="text-xs font-bold text-slate-700 flex items-center gap-1.5 justify-end">
+                    <p class="text-[9px] text-slate-400 font-black uppercase tracking-widest mb-1.5">Región</p>
+                    <p id="display-pais" class="text-xs font-bold text-slate-700 flex items-center gap-2 justify-end">
                         <span id="country-flag">🇲🇽</span> <span id="country-name">México</span>
                     </p>
                 </div>
@@ -103,57 +153,49 @@
             
             <!-- PANEL DE CONTROL (INPUTS) -->
             <aside class="lg:col-span-4 space-y-6">
-                <div class="bg-white p-8 rounded-[2.5rem] shadow-xl shadow-slate-200/40 border border-slate-100">
-                    <h3 class="text-lg font-bold mb-6 flex items-center gap-2">
-                        <i data-lucide="settings-2" class="w-5 h-5 text-indigo-500"></i> Parámetros de la Clínica
+                <div class="mercury-card p-8 rounded-[2.5rem]">
+                    <h3 class="text-md font-bold mb-8 text-slate-700 uppercase tracking-widest flex items-center gap-2">
+                        <i data-lucide="sliders" class="w-4 h-4 opacity-40"></i> Variables Actuales
                     </h3>
                     
                     <div class="space-y-6">
-                        <!-- Selección de País -->
                         <div>
-                            <label class="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase mb-2 tracking-wider">
-                                <i data-lucide="globe" class="w-3 h-3 text-indigo-400"></i> País / Divisa
-                            </label>
-                            <select id="input-pais" class="w-full p-3.5 bg-slate-50 border-0 rounded-xl ring-1 ring-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition-all font-semibold text-sm cursor-pointer">
-                                <!-- Opciones cargadas por JS -->
+                            <label class="text-[9px] font-black text-slate-400 uppercase mb-2 block tracking-widest">Mercado Local</label>
+                            <select id="input-pais" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-4 focus:ring-emerald-500/5 outline-none transition-all font-semibold text-slate-600 text-sm appearance-none cursor-pointer">
+                                <!-- Opciones por JS -->
                             </select>
                         </div>
 
-                        <!-- Datos Numéricos -->
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="text-[10px] font-black text-slate-500 uppercase mb-2 block tracking-wider">Mensajes / Día</label>
-                                <input type="number" id="input-mensajes" value="350" class="w-full p-3.5 bg-slate-50 border-0 rounded-xl ring-1 ring-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none font-bold text-slate-700">
+                                <label class="text-[9px] font-black text-slate-400 uppercase mb-2 block tracking-widest">Msjs / Día</label>
+                                <input type="number" id="input-mensajes" value="350" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-4 focus:ring-emerald-500/5 outline-none font-bold text-slate-700">
                             </div>
                             <div>
-                                <label class="text-[10px] font-black text-slate-500 uppercase mb-2 block tracking-wider text-indigo-500">Ticket Mínimo</label>
-                                <input type="number" id="input-ticket" value="1200" class="w-full p-3.5 bg-slate-50 border-0 rounded-xl ring-1 ring-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none font-bold text-slate-700">
-                                <span id="usd-input-ticket" class="text-[9px] text-slate-400 font-bold mt-1.5 block tracking-tighter"></span>
+                                <label class="text-[9px] font-black text-emerald-600 uppercase mb-2 block tracking-widest">Costo Consulta</label>
+                                <input type="number" id="input-ticket" value="1200" class="w-full p-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-4 focus:ring-emerald-500/5 outline-none font-bold text-slate-700">
+                                <span id="usd-input-ticket" class="text-[9px] text-slate-400 font-bold mt-2 block opacity-60"></span>
                             </div>
                         </div>
 
-                        <!-- Gasto Nómina -->
                         <div>
-                            <label class="flex items-center gap-2 text-[10px] font-black text-slate-500 uppercase mb-2 tracking-wider">
-                                <i data-lucide="users" class="w-3 h-3 text-indigo-400"></i> Gasto Mensual en Recepción
-                            </label>
-                            <input type="number" id="input-nomina" value="15000" class="w-full p-4 bg-slate-50 border-0 rounded-xl ring-1 ring-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none font-black text-xl text-indigo-600 shadow-inner">
-                            <span id="usd-input-nomina" class="text-[10px] text-indigo-400 font-bold mt-2 block opacity-80 tracking-tighter"></span>
+                            <label class="text-[9px] font-black text-slate-400 uppercase mb-2 block tracking-widest">Nómina Recepción (Mensual)</label>
+                            <input type="number" id="input-nomina" value="15000" class="w-full p-5 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-emerald-500/5 outline-none font-black text-2xl text-slate-800 shadow-sm transition-all">
+                            <span id="usd-input-nomina" class="text-[10px] text-emerald-600 font-bold mt-2 block opacity-70"></span>
                         </div>
 
-                        <!-- Sliders de Tasas -->
-                        <div class="pt-4 space-y-7 border-t border-slate-100">
+                        <div class="pt-6 space-y-6 border-t border-slate-50">
                             <div>
                                 <div class="flex justify-between mb-2">
-                                    <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Tasa de Agenda Actual</label>
-                                    <span id="val-agenda" class="text-xs font-black text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">10%</span>
+                                    <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Tasa Agendamiento</label>
+                                    <span id="val-agenda" class="text-[10px] font-black text-emerald-700">10%</span>
                                 </div>
                                 <input type="range" id="input-agenda" min="1" max="50" step="1" value="10" class="w-full">
                             </div>
                             <div>
                                 <div class="flex justify-between mb-2">
-                                    <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Tasa de Asistencia Actual</label>
-                                    <span id="val-asistencia" class="text-xs font-black text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">70%</span>
+                                    <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Tasa Asistencia</label>
+                                    <span id="val-asistencia" class="text-[10px] font-black text-emerald-700">70%</span>
                                 </div>
                                 <input type="range" id="input-asistencia" min="1" max="100" step="1" value="70" class="w-full">
                             </div>
@@ -161,176 +203,158 @@
                     </div>
                 </div>
 
-                <!-- Info Alert -->
-                <div class="bg-indigo-900 text-white p-7 rounded-[2rem] shadow-lg shadow-indigo-100 relative overflow-hidden group">
+                <div class="bg-slate-900 p-8 rounded-[2.5rem] shadow-xl relative overflow-hidden group">
                     <div class="relative z-10">
-                        <div class="flex gap-3 items-center mb-3">
-                            <i data-lucide="info" class="w-4 h-4 text-indigo-300"></i>
-                            <span class="text-[10px] font-black uppercase tracking-widest text-indigo-300">Ventaja Competitiva</span>
-                        </div>
-                        <p class="text-xs font-medium italic opacity-90 leading-relaxed">
-                            "Nuestra IA responde en 0.4s, eliminando la 'Fuga por Abandono' que afecta al 65% de las clínicas en LATAM."
+                        <p class="text-[12px] font-medium italic text-slate-300 leading-relaxed">
+                            "La inmediatez es el nuevo estándar. La IA captura al paciente en <span class="text-white font-bold">0.4s</span>, antes de que busque otra opción."
                         </p>
                     </div>
-                    <div class="absolute -right-4 -bottom-4 w-20 h-20 bg-white/5 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+                    <div class="absolute -right-4 -bottom-4 w-16 h-16 bg-emerald-500/10 rounded-full group-hover:scale-150 transition-transform duration-1000"></div>
                 </div>
             </aside>
 
             <!-- PANEL DE RESULTADOS -->
-            <main class="lg:col-span-8 space-y-6">
+            <main class="lg:col-span-8 space-y-8">
                 
-                <!-- HERO CARD: INGRESO TOTAL -->
-                <section class="bg-indigo-600 p-10 rounded-[3rem] text-white shadow-2xl shadow-indigo-200 relative overflow-hidden group">
+                <!-- HERO CARD: UTILIDAD TOTAL -->
+                <section class="bg-white p-12 rounded-[3.5rem] text-slate-800 shadow-2xl shadow-slate-200/40 border border-white relative overflow-hidden group">
                     <div class="relative z-10">
-                        <p class="text-indigo-200 text-[10px] font-black uppercase tracking-widest mb-3 italic">Ingreso Total Proyectado con Oly Systems</p>
-                        <h2 id="res-ingreso-total" class="text-5xl md:text-7xl font-black mb-2 tracking-tighter">
+                        <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.4em] mb-4">Utilidad Neta Mensual Proyectada</p>
+                        <h2 id="res-ingreso-total" class="text-6xl md:text-8xl font-black mb-2 tracking-tighter text-slate-900">
                             $0.00
                         </h2>
-                        <p id="usd-res-ingreso-total" class="text-indigo-200 text-sm mb-8 opacity-90 font-bold tracking-tight"></p>
+                        <p id="usd-res-ingreso-total" class="text-emerald-600 text-lg mb-10 font-black tracking-tight"></p>
                         
                         <div class="flex flex-wrap gap-4">
-                            <div class="flex flex-col bg-white/10 p-4 rounded-2xl backdrop-blur-md border border-white/20 min-w-[160px]">
-                                <span class="flex items-center gap-2 text-xs font-black mb-1">
-                                    <i data-lucide="trending-up" class="w-4 h-4 text-green-400"></i>
-                                    Ventas Extras
-                                </span>
-                                <span id="res-ventas-extras" class="text-lg font-bold">$0</span>
-                                <span id="usd-res-ventas-extras" class="text-[10px] opacity-60 font-bold mt-1"></span>
+                            <div class="flex flex-col bg-slate-50 p-5 rounded-3xl border border-slate-100 min-w-[200px] hover:bg-white hover:shadow-lg transition-all duration-300">
+                                <span class="text-[10px] font-black uppercase mb-2 text-slate-400 tracking-widest">Ahorro en Nómina</span>
+                                <span id="res-ahorro-operativo" class="text-xl font-black text-slate-800">$0</span>
+                                <span id="usd-res-ahorro-operativo" class="text-[10px] font-bold text-slate-400 mt-1"></span>
                             </div>
-                            <div class="flex flex-col bg-white/10 p-4 rounded-2xl backdrop-blur-md border border-white/20 min-w-[160px]">
-                                <span class="flex items-center gap-2 text-xs font-black mb-1 text-indigo-100">
-                                    <i data-lucide="scissors" class="w-4 h-4 text-indigo-300"></i>
-                                    Ahorro en Nómina
-                                </span>
-                                <span id="res-ahorro-operativo" class="text-lg font-bold">$0</span>
-                                <span id="usd-res-ahorro-operativo" class="text-[10px] opacity-60 font-bold mt-1"></span>
+                            <div class="flex flex-col bg-slate-50 p-5 rounded-3xl border border-slate-100 min-w-[200px] hover:bg-white hover:shadow-lg transition-all duration-300">
+                                <span class="text-[10px] font-black uppercase mb-2 text-slate-400 tracking-widest">Facturación Extra</span>
+                                <span id="res-ventas-extras" class="text-xl font-black text-slate-800">$0</span>
+                                <span id="usd-res-ventas-extras" class="text-[10px] font-bold text-slate-400 mt-1"></span>
                             </div>
                         </div>
                     </div>
-                    <!-- Decoración Background -->
-                    <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl opacity-50 group-hover:scale-110 transition-transform duration-1000"></div>
+                    <!-- Mercury Glow -->
+                    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-50/30 rounded-full translate-x-1/2 -translate-y-1/2 blur-[120px] opacity-40"></div>
                 </section>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
-                    <!-- COMPARATIVA DE INVERSIÓN -->
-                    <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col h-full">
-                        <h4 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-8">Análisis de Inversión</h4>
+                    <!-- ANÁLISIS DE COSTOS -->
+                    <div class="mercury-card p-10 rounded-[3rem] flex flex-col h-full">
+                        <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-10">Eficiencia Operativa</h4>
                         
-                        <div class="space-y-8 flex-grow">
-                            <!-- Humano -->
+                        <div class="space-y-10 flex-grow">
                             <div>
                                 <div class="flex justify-between items-end mb-3">
                                     <div class="flex flex-col">
-                                        <span class="text-[10px] font-black text-slate-500 uppercase tracking-tighter">Gasto Humano Actual</span>
-                                        <span id="usd-res-costo-humano" class="text-[9px] opacity-60 font-bold tracking-tight text-slate-400"></span>
+                                        <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Gasto Humano Actual</span>
+                                        <span id="usd-res-costo-humano" class="text-[10px] font-bold text-slate-300"></span>
                                     </div>
-                                    <span id="res-costo-humano" class="text-sm font-black text-slate-700">$0</span>
+                                    <span id="res-costo-humano" class="text-sm font-black text-slate-600">$0</span>
                                 </div>
-                                <div class="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
                                     <div class="h-full bg-slate-300 rounded-full" style="width: 100%;"></div>
                                 </div>
                             </div>
 
-                            <!-- IA -->
                             <div>
                                 <div class="flex justify-between items-end mb-3">
                                     <div class="flex flex-col">
-                                        <span class="text-[10px] font-black text-indigo-600 uppercase tracking-tighter italic">Inversión Ecosistema IA</span>
-                                        <span id="usd-res-costo-ia" class="text-[9px] opacity-60 font-bold tracking-tight text-indigo-400"></span>
+                                        <span class="text-[9px] font-black text-emerald-600 uppercase tracking-widest">Inversión Ecosistema IA</span>
+                                        <span id="usd-res-costo-ia" class="text-[10px] font-bold text-emerald-200"></span>
                                     </div>
-                                    <span id="res-costo-ia" class="text-sm font-black text-indigo-600">$0</span>
+                                    <span id="res-costo-ia" class="text-sm font-black text-emerald-700">$0</span>
                                 </div>
-                                <div class="h-2.5 w-full bg-indigo-50 rounded-full overflow-hidden">
-                                    <div id="bar-ia" class="h-full bg-indigo-600 rounded-full shadow-[0_0_12px_rgba(79,70,229,0.3)] transition-all duration-1000" style="width: 0%;"></div>
+                                <div class="h-1.5 w-full bg-emerald-50 rounded-full overflow-hidden shadow-inner">
+                                    <div id="bar-ia" class="h-full bg-emerald-500 rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(16,185,129,0.3)]" style="width: 0%;"></div>
                                 </div>
                             </div>
 
-                            <!-- Desglose -->
-                            <div class="pt-6 border-t border-slate-50">
-                                <p class="text-[9px] font-black text-slate-400 uppercase mb-5 tracking-widest">Desglose de Costos del Ecosistema</p>
-                                <div class="space-y-4">
-                                    <div class="flex justify-between items-center group">
-                                        <div class="flex flex-col">
-                                            <span class="text-xs font-bold text-slate-600 group-hover:text-indigo-600 transition-colors cursor-default">Servicio Oly Systems</span>
-                                            <span id="usd-det-mantenimiento" class="text-[9px] opacity-50 font-bold"></span>
-                                        </div>
-                                        <span id="det-mantenimiento" class="text-xs font-black text-slate-700">$0</span>
+                            <div class="pt-8 border-t border-slate-50 space-y-5">
+                                <div class="flex justify-between items-center text-xs">
+                                    <div class="flex flex-col">
+                                        <span class="font-bold text-slate-500">Suscripción Oly Systems</span>
+                                        <span id="usd-det-mantenimiento" class="text-[9px] text-slate-300 font-bold"></span>
                                     </div>
-                                    <div class="flex justify-between items-center group">
-                                        <div class="flex flex-col">
-                                            <span class="text-xs font-bold text-slate-600 group-hover:text-indigo-600 transition-colors cursor-default">OpenAI (Tokens/Memoria)</span>
-                                            <span id="usd-det-openai" class="text-[9px] opacity-50 font-bold"></span>
-                                        </div>
-                                        <span id="det-openai" class="text-xs font-black text-slate-700">$0</span>
+                                    <span id="det-mantenimiento" class="font-black text-slate-700">$0</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs">
+                                    <div class="flex flex-col">
+                                        <span class="font-bold text-slate-500">Procesamiento OpenAI</span>
+                                        <span id="usd-det-openai" class="text-[9px] text-slate-300 font-bold"></span>
                                     </div>
-                                    <div class="flex justify-between items-center group">
-                                        <div class="flex flex-col">
-                                            <span class="text-xs font-bold text-slate-600 group-hover:text-indigo-600 transition-colors cursor-default">Meta (WhatsApp API)</span>
-                                            <span id="usd-det-whatsapp" class="text-[9px] opacity-50 font-bold"></span>
-                                        </div>
-                                        <span id="det-whatsapp" class="text-xs font-black text-slate-700">$0</span>
+                                    <span id="det-openai" class="font-black text-slate-700">$0</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs">
+                                    <div class="flex flex-col">
+                                        <span class="font-bold text-slate-500">Sesiones Meta API</span>
+                                        <span id="usd-det-whatsapp" class="text-[9px] text-slate-300 font-bold"></span>
                                     </div>
+                                    <span id="det-whatsapp" class="font-black text-slate-700">$0</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- UTILIDAD NETA EXTRA -->
-                    <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col justify-between">
-                        <div>
-                            <h4 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-8">Utilidad Mensual Neta</h4>
+                    <!-- RENTABILIDAD NETA -->
+                    <div class="bg-white p-10 rounded-[3rem] shadow-sm border border-slate-100 flex flex-col justify-between relative overflow-hidden">
+                        <div class="relative z-10">
+                            <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-10">Plus de Rentabilidad</h4>
                             <div class="space-y-5">
-                                <div class="bg-slate-50 p-5 rounded-3xl border border-slate-100/50">
-                                    <div class="flex justify-between items-start mb-1">
-                                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Facturación Actual</p>
-                                        <p id="usd-res-ingreso-humano" class="text-[9px] opacity-50 font-black"></p>
+                                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-100">
+                                    <p class="text-[9px] font-black text-slate-400 uppercase mb-2 tracking-widest">Beneficio Actual</p>
+                                    <div class="flex justify-between items-end">
+                                        <p id="res-ingreso-humano" class="text-2xl font-bold text-slate-400 tracking-tighter opacity-60">$0</p>
+                                        <span id="usd-res-ingreso-humano" class="text-[10px] font-black text-slate-300 mb-1"></span>
                                     </div>
-                                    <p id="res-ingreso-humano" class="text-2xl font-bold text-slate-400 tracking-tighter opacity-60">$0</p>
                                 </div>
-                                <div class="bg-green-50/50 p-6 rounded-3xl border border-green-100 shadow-sm">
-                                    <div class="flex justify-between items-start mb-1">
-                                        <p class="text-[9px] font-black text-green-600 uppercase tracking-widest">Facturación con IA</p>
-                                        <p id="usd-res-ingreso-oly-small" class="text-[9px] text-green-600 opacity-60 font-black"></p>
+                                <div class="bg-emerald-50/40 p-6 rounded-3xl border border-emerald-100 shadow-sm">
+                                    <p class="text-[9px] font-black text-emerald-600 uppercase mb-2 tracking-widest">Beneficio con Oly Systems</p>
+                                    <div class="flex justify-between items-end">
+                                        <p id="res-ingreso-oly-small" class="text-3xl font-black text-emerald-700 tracking-tighter">$0</p>
+                                        <span id="usd-res-ingreso-oly-small" class="text-[10px] font-black text-emerald-600 opacity-60 mb-1"></span>
                                     </div>
-                                    <p id="res-ingreso-oly-small" class="text-3xl font-black text-green-700 tracking-tighter">$0</p>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="mt-8 flex items-center gap-4 bg-green-600 p-5 rounded-[2rem] shadow-xl shadow-green-200 group">
-                            <div class="bg-green-500 p-2 rounded-xl group-hover:rotate-12 transition-transform">
+                        <div class="mt-10 flex items-center gap-5 bg-slate-900 p-6 rounded-[2.5rem] shadow-2xl shadow-emerald-900/20 group relative z-10">
+                            <div class="bg-emerald-500 p-3 rounded-2xl shadow-lg shadow-emerald-500/20 group-hover:rotate-6 transition-all duration-500">
                                 <i data-lucide="trending-up" class="w-6 h-6 text-white"></i>
                             </div>
                             <div>
-                                <p class="text-[9px] font-black uppercase text-green-100 leading-none mb-1.5 tracking-widest">Utilidad Extra Bruta</p>
+                                <p class="text-[9px] font-black uppercase text-emerald-400 leading-none mb-2 tracking-[0.2em]">Crecimiento Neto Real</p>
                                 <div class="flex items-center gap-2">
                                     <p id="res-plus-neto" class="text-2xl font-black text-white leading-none tracking-tighter">+$0</p>
-                                    <span id="usd-res-plus-neto" class="text-[11px] text-green-100 font-black opacity-80"></span>
+                                    <span id="usd-res-plus-neto" class="text-[11px] text-emerald-300 font-bold opacity-80"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- FOOTER CTA -->
-                <footer class="bg-slate-900 p-10 rounded-[3rem] flex flex-col md:flex-row items-center justify-between gap-8 border-b-8 border-indigo-600 relative overflow-hidden group">
+                <!-- FOOTER BIG TECH -->
+                <footer class="btn-mercury p-12 rounded-[3.5rem] flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden shadow-2xl">
                     <div class="text-center md:text-left relative z-10">
-                        <h4 class="text-white font-black text-3xl mb-2 tracking-tight">¿Escalamos tu clínica?</h4>
-                        <p class="text-slate-400 text-sm font-medium italic max-w-sm">
-                            Este ecosistema se paga solo mediante la utilidad extra del primer mes de implementación.
+                        <h4 class="text-white font-black text-4xl mb-3 tracking-tighter">Escala tu clínica hoy</h4>
+                        <p class="text-emerald-100 text-sm font-medium italic opacity-80 max-w-sm">
+                            Este ecosistema amortiza su inversión total mediante la utilidad neta recuperada en el primer mes.
                         </p>
                     </div>
-                    <button class="w-full md:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-black px-12 py-5 rounded-2xl transition-all shadow-2xl shadow-indigo-600/40 flex items-center justify-center gap-3 active:scale-95 relative z-10 group/btn">
-                        SOLICITAR IMPLEMENTACIÓN
-                        <i data-lucide="chevron-right" class="w-5 h-5 group-hover/btn:translate-x-1 transition-transform"></i>
+                    <button class="w-full md:w-auto bg-white text-emerald-900 font-black px-12 py-5 rounded-2xl transition-all shadow-xl hover:bg-emerald-50 hover:scale-105 active:scale-95 flex items-center justify-center gap-3 relative z-10">
+                        IMPLEMENTAR AHORA
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
                     </button>
-                    <!-- Visual decoration -->
-                    <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-20"></div>
+                    <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
                 </footer>
 
-                <p class="text-center text-[10px] text-slate-400 font-bold uppercase tracking-[0.4em] py-6 opacity-60">
-                    © 2024 Oly Systems | Auditoría Técnica Médica Digital
+                <p class="text-center text-[10px] text-slate-300 font-black uppercase tracking-[0.6em] py-10">
+                    Oly Systems © 2024 / Auditoría de Alto Impacto
                 </p>
             </main>
         </div>
@@ -338,22 +362,20 @@
 
     <script>
         /**
-         * LÓGICA DE NEGOCIO Y CALCULADORA (JavaScript)
+         * LÓGICA DE NEGOCIO PREMIUM (JavaScript)
          */
 
-        // 1. Configuración de Mercados y Divisas
         const paises = {
-            MX: { nombre: 'México', moneda: 'MXN', simbolo: '$', cambioUSD: 19.50, costoWAService: 0.010, flag: '🇲🇽' },
-            CO: { nombre: 'Colombia', moneda: 'COP', simbolo: '$', cambioUSD: 3950, costoWAService: 0.008, flag: '🇨🇴' },
-            EC: { nombre: 'Ecuador', moneda: 'USD', simbolo: '$', cambioUSD: 1, costoWAService: 0.010, flag: '🇪🇨' },
-            ES: { nombre: 'España', moneda: 'EUR', simbolo: '€', cambioUSD: 0.95, costoWAService: 0.035, flag: '🇪🇸' },
-            AR: { nombre: 'Argentina', moneda: 'ARS', simbolo: '$', cambioUSD: 1000, costoWAService: 0.010, flag: '🇦🇷' },
-            CL: { nombre: 'Chile', moneda: 'CLP', simbolo: '$', cambioUSD: 940, costoWAService: 0.010, flag: '🇨🇱' },
-            PE: { nombre: 'Perú', moneda: 'PEN', simbolo: 'S/', cambioUSD: 3.75, costoWAService: 0.010, flag: '🇵🇪' },
-            US: { nombre: 'Estados Unidos', moneda: 'USD', simbolo: '$', cambioUSD: 1, costoWAService: 0.015, flag: '🇺🇸' },
+            MX: { nombre: 'México', moneda: 'MXN', cambioUSD: 19.50, costoWAService: 0.010, flag: '🇲🇽' },
+            CO: { nombre: 'Colombia', moneda: 'COP', cambioUSD: 3950, costoWAService: 0.008, flag: '🇨🇴' },
+            EC: { nombre: 'Ecuador', moneda: 'USD', cambioUSD: 1, costoWAService: 0.010, flag: '🇪🇨' },
+            ES: { nombre: 'España', moneda: 'EUR', cambioUSD: 0.95, costoWAService: 0.035, flag: '🇪🇸' },
+            AR: { nombre: 'Argentina', moneda: 'ARS', cambioUSD: 1000, costoWAService: 0.010, flag: '🇦🇷' },
+            CL: { nombre: 'Chile', moneda: 'CLP', cambioUSD: 940, costoWAService: 0.010, flag: '🇨🇱' },
+            PE: { nombre: 'Perú', moneda: 'PEN', cambioUSD: 3.75, costoWAService: 0.010, flag: '🇵🇪' },
+            US: { nombre: 'Estados Unidos', moneda: 'USD', cambioUSD: 1, costoWAService: 0.015, flag: '🇺🇸' },
         };
 
-        // 2. Selección de Elementos del DOM
         const dom = {
             pais: document.getElementById('input-pais'),
             mensajes: document.getElementById('input-mensajes'),
@@ -361,12 +383,9 @@
             nomina: document.getElementById('input-nomina'),
             agenda: document.getElementById('input-agenda'),
             asistencia: document.getElementById('input-asistencia'),
-            apiStatus: document.getElementById('api-status'),
-            displayFlag: document.getElementById('country-flag'),
-            displayName: document.getElementById('country-name')
+            apiStatus: document.getElementById('api-status')
         };
 
-        // 3. Inicializar Selector de Países
         Object.keys(paises).forEach(code => {
             const option = document.createElement('option');
             option.value = code;
@@ -374,7 +393,6 @@
             dom.pais.appendChild(option);
         });
 
-        // 4. Formateadores Profesionales
         function formatLocal(val, paisCode) {
             const config = paises[paisCode];
             return new Intl.NumberFormat('es-' + paisCode, { 
@@ -392,13 +410,11 @@
             }).format(val);
         }
 
-        // 5. Sincronización de Divisas Real-Time
         async function syncExchangeRates(retries = 0) {
             const url = 'https://open.er-api.com/v6/latest/USD';
             try {
                 const response = await fetch(url);
                 if (!response.ok) throw new Error('Network Error');
-                
                 const data = await response.json();
                 if (data.result === 'success') {
                     const r = data.rates;
@@ -408,27 +424,15 @@
                     if (r.ARS) paises.AR.cambioUSD = r.ARS;
                     if (r.CLP) paises.CL.cambioUSD = r.CLP;
                     if (r.PEN) paises.PE.cambioUSD = r.PEN;
-
-                    dom.apiStatus.classList.remove('text-amber-500', 'loading-pulse');
-                    dom.apiStatus.classList.add('text-green-500');
-                    dom.apiStatus.innerHTML = `<i data-lucide="shield-check" class="w-3 h-3"></i> Mercado Actualizado`;
-                    lucide.createIcons();
-                    
+                    dom.apiStatus.classList.remove('loading-pulse');
+                    dom.apiStatus.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span> Mercado Actualizado`;
                     updateCalculations();
                 }
-            } catch (error) {
-                if (retries < 3) {
-                    setTimeout(() => syncExchangeRates(retries + 1), 2000);
-                } else {
-                    dom.apiStatus.classList.remove('loading-pulse');
-                    dom.apiStatus.classList.add('text-red-500');
-                    dom.apiStatus.innerHTML = `<i data-lucide="alert-triangle" class="w-3 h-3"></i> Error Sincro (Usando Base)`;
-                    lucide.createIcons();
-                }
+            } catch (e) {
+                if (retries < 3) setTimeout(() => syncExchangeRates(retries + 1), 2000);
             }
         }
 
-        // 6. Núcleo Matemático de la Auditoría
         function updateCalculations() {
             const code = dom.pais.value;
             const config = paises[code];
@@ -441,98 +445,89 @@
 
             const interaccionesMes = msjsDiarios * 30;
 
-            // --- COSTOS INFRAESTRUCTURA IA ---
-            
-            // Meta: WhatsApp API (1 convo x cada 10 msjs aprox)
+            // --- COSTOS IA ---
             const costoMetaUSD = (interaccionesMes / 10) * config.costoWAService;
             const costoMetaLocal = costoMetaUSD * config.cambioUSD;
 
-            // OpenAI: Tokens Robustos ($0.008 USD por cada mensaje con contexto)
             const costoTokensUSD = interaccionesMes * 0.008;
             const costoTokensLocal = costoTokensUSD * config.cambioUSD;
 
-            // Oly Systems: $5,000 MXN base escalado a mercado local
             const baseMXN = 5000;
             const olyUSD = baseMXN / paises.MX.cambioUSD;
             const olyLocal = olyUSD * config.cambioUSD;
 
             const totalIALocal = costoMetaLocal + costoTokensLocal + olyLocal;
-            const ahorroOperativo = nominaActual - totalIALocal;
 
             // --- PROYECCIÓN DE INGRESOS ---
-            
-            // Lógica de Negocio: IA mejora +5% la conversión de agenda
             const conversionIA = tAgendaActual + 5;
-            
             const citasActuales = interaccionesMes * (tAgendaActual / 100) * (tAsistActual / 100);
-            const ingresoActual = citasActuales * ticket;
+            const ingresoActualBruto = citasActuales * ticket;
 
             const citasIA = interaccionesMes * (conversionIA / 100) * (tAsistActual / 100);
-            const ingresoVentasIA = citasIA * ticket;
+            const ingresoIABruto = citasIA * ticket;
 
-            // Ingreso Total = Ahorro Nómina + Venta Extra
-            const ingresoTotalOly = ingresoVentasIA + ahorroOperativo;
+            // --- CÁLCULO DE UTILIDAD NETA REAL (INGRESOS - COSTOS) ---
+            // Beneficio Actual = Ventas Actuales - Nómina Actual
+            const beneficioActual = ingresoActualBruto - nominaActual;
+            // Beneficio IA = Ventas IA - Costos IA
+            const beneficioIA = ingresoIABruto - totalIALocal;
 
-            // --- ACTUALIZACIÓN DE INTERFAZ ---
-            
-            dom.displayFlag.textContent = config.flag;
-            dom.displayName.textContent = config.nombre;
+            const plusNetoReal = beneficioIA - beneficioActual;
+
+            // UI
+            document.getElementById('country-flag').textContent = config.flag;
+            document.getElementById('country-name').textContent = config.nombre;
             document.getElementById('val-agenda').textContent = tAgendaActual + '%';
             document.getElementById('val-asistencia').textContent = tAsistActual + '%';
 
-            // Referencias USD en Inputs
             document.getElementById('usd-input-ticket').textContent = `≈ ${formatUSD(ticket / config.cambioUSD)} USD`;
             document.getElementById('usd-input-nomina').textContent = `≈ ${formatUSD(nominaActual / config.cambioUSD)} USD`;
 
-            // Hero Section
-            document.getElementById('res-ingreso-total').textContent = formatLocal(ingresoTotalOly, code);
-            document.getElementById('usd-res-ingreso-total').textContent = `≈ ${formatUSD(ingresoTotalOly / config.cambioUSD)} USD`;
+            // Hero
+            document.getElementById('res-ingreso-total').textContent = formatLocal(plusNetoReal, code);
+            document.getElementById('usd-res-ingreso-total').textContent = `≈ ${formatUSD(plusNetoReal / config.cambioUSD)} USD de ganancia extra libre`;
 
-            document.getElementById('res-ventas-extras').textContent = formatLocal(ingresoVentasIA - ingresoActual, code);
-            document.getElementById('usd-res-ventas-extras').textContent = `≈ ${formatUSD((ingresoVentasIA - ingresoActual) / config.cambioUSD)} USD`;
+            document.getElementById('res-ventas-extras').textContent = formatLocal(ingresoIABruto - ingresoActualBruto, code);
+            document.getElementById('usd-res-ventas-extras').textContent = `≈ ${formatUSD((ingresoIABruto - ingresoActualBruto) / config.cambioUSD)} USD`;
 
-            document.getElementById('res-ahorro-operativo').textContent = formatLocal(ahorroOperativo, code);
-            document.getElementById('usd-res-ahorro-operativo').textContent = `≈ ${formatUSD(ahorroOperativo / config.cambioUSD)} USD`;
+            document.getElementById('res-ahorro-operativo').textContent = formatLocal(nominaActual - totalIALocal, code);
+            document.getElementById('usd-res-ahorro-operativo').textContent = `≈ ${formatUSD((nominaActual - totalIALocal) / config.cambioUSD)} USD`;
 
-            // Barras de Inversión
+            // Eficiencia
             document.getElementById('res-costo-humano').textContent = formatLocal(nominaActual, code);
             document.getElementById('usd-res-costo-humano').textContent = `≈ ${formatUSD(nominaActual / config.cambioUSD)} USD`;
-            
             document.getElementById('res-costo-ia').textContent = formatLocal(totalIALocal, code);
             document.getElementById('usd-res-costo-ia').textContent = `≈ ${formatUSD(totalIALocal / config.cambioUSD)} USD`;
             
             const ratio = (totalIALocal / nominaActual) * 100;
-            document.getElementById('bar-ia').style.width = Math.min(100, Math.max(0, ratio)) + '%';
+            document.getElementById('bar-ia').style.width = Math.min(100, Math.max(5, ratio)) + '%';
 
             // Desglose
             document.getElementById('det-mantenimiento').textContent = formatLocal(olyLocal, code);
             document.getElementById('usd-det-mantenimiento').textContent = `≈ ${formatUSD(olyUSD)} USD`;
-
             document.getElementById('det-openai').textContent = formatLocal(costoTokensLocal, code);
             document.getElementById('usd-det-openai').textContent = `≈ ${formatUSD(costoTokensUSD)} USD`;
-
             document.getElementById('det-whatsapp').textContent = formatLocal(costoMetaLocal, code);
             document.getElementById('usd-det-whatsapp').textContent = `≈ ${formatUSD(costoMetaUSD)} USD`;
 
-            // Utilidad Neta
-            document.getElementById('res-ingreso-humano').textContent = formatLocal(ingresoActual, code);
-            document.getElementById('usd-res-ingreso-humano').textContent = `≈ ${formatUSD(ingresoActual / config.cambioUSD)} USD`;
+            // Utilidad
+            document.getElementById('res-ingreso-humano').textContent = formatLocal(beneficioActual, code);
+            document.getElementById('usd-res-ingreso-humano').textContent = `≈ ${formatUSD(beneficioActual / config.cambioUSD)} USD`;
 
-            const olySmallDisplays = document.querySelectorAll('#res-ingreso-oly-small');
-            olySmallDisplays.forEach(el => el.textContent = formatLocal(ingresoTotalOly, code));
-            document.getElementById('usd-res-ingreso-oly-small').textContent = `≈ ${formatUSD(ingresoTotalOly / config.cambioUSD)} USD`;
+            const olySmalls = document.querySelectorAll('#res-ingreso-oly-small');
+            olySmalls.forEach(el => el.textContent = formatLocal(beneficioIA, code));
+            document.getElementById('usd-res-ingreso-oly-small').textContent = `≈ ${formatUSD(beneficioIA / config.cambioUSD)} USD`;
 
-            document.getElementById('res-plus-neto').textContent = '+' + formatLocal(ingresoTotalOly - ingresoActual, code);
-            document.getElementById('usd-res-plus-neto').textContent = `(${formatUSD((ingresoTotalOly - ingresoActual) / config.cambioUSD)} USD)`;
+            document.getElementById('res-plus-neto').textContent = '+' + formatLocal(plusNetoReal, code);
+            document.getElementById('usd-res-plus-neto').textContent = `(${formatUSD(plusNetoReal / config.cambioUSD)} USD)`;
         }
 
-        // 7. Event Listeners y Ciclo de Vida
         const inputsToWatch = [dom.pais, dom.mensajes, dom.ticket, dom.nomina, dom.agenda, dom.asistencia];
         inputsToWatch.forEach(el => el.addEventListener('input', updateCalculations));
 
         window.onload = () => {
             lucide.createIcons();
-            syncExchangeRates(); // Inicia sincronización en tiempo real
+            syncExchangeRates(); 
             updateCalculations();
         };
     </script>
